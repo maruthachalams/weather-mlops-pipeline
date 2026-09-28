@@ -8,15 +8,12 @@ import mlflow.sklearn
 
 mlflow.set_experiment("Coimbatore_weather_model")
 with mlflow.start_run():
-    data = {
-        "day": [[1], [2], [3], [4], [5], [6], [7], [8], [9], [10]],
-        "temperature": [28, 29, 29, 30, 31, 31, 32, 33, 33, 34]
-    }    
+    data = pd.read_csv("data/weather.csv")   
 
     model = LinearRegression()
-    model.fit(data["day"], data["temperature"])
+    model.fit(data[["day"]], data["temperature"])
 
-    accuracy = model.score(data["day"], data["temperature"])
+    accuracy = model.score(data[["day"]], data["temperature"])
 
     mlflow.log_param("algorithm", "LinearRegression")
     mlflow.log_metric("training_accuracy", accuracy)
