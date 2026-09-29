@@ -2,4 +2,4 @@
 __pycache__/
 *.pyc
 mlruns/
-temperature_model.pkl
+temperature_model.pkl*.db
