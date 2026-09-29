@@ -24,6 +24,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Recreate dataset for CI runner
+        run: |
+          mkdir -p data
+          echo "day,temperature" > data/weather.csv
+          echo "1,28" >> data/weather.csv
+          echo "2,29" >> data/weather.csv
+          echo "3,29" >> data/weather.csv
+          echo "4,30" >> data/weather.csv
+          echo "5,31" >> data/weather.csv
+
       - name: Retrain Model Artifact
         run: |
           python train.py
